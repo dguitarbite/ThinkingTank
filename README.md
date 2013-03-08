@@ -12,7 +12,7 @@ More Information will be added as we work on this project.
 
 
 
-Break down of the folders :
+Break down of the folders:
 
 <code>
 ThinkingTank. <br>
