@@ -25,7 +25,7 @@ Break down of the folders:
 	    	|-- res <br>
  	    	|	 |   - This folder contains all the resources like sound files, pictures etc. <br>
 	    	|    -- images <br>
-	    	|    |  -- background`` <br>
+	    	|    |  -- background <br>
 	    	|    |      -- dawn of ubuntu.png <br>
 	    	|   -- sound<br>
 	    	|        -- score <br>
