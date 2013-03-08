@@ -33,6 +33,6 @@ ThinkingTank. <br>
 	     -- src <br>
 		  - This file contains the source code of the project.`` <br>
 	             |-- Noise.py <br>
-	       	      -- prototype.py`` <br>
+	       	      -- prototype.py <br>
 </code>
 
