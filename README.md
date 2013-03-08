@@ -14,7 +14,7 @@ More Information will be added as we work on this project.
 
 Break down of the folders :
 
-<p>
+<code>
 ThinkingTank. <br>
 	    |-- Bin <br>
 	    |	-- This folder contains the binaries (if any) and other dependences required for running <br>	    |	  the game.
@@ -34,5 +34,5 @@ ThinkingTank. <br>
 		  - This file contains the source code of the project.`` <br>
 	             |-- Noise.py <br>
 	       	      -- prototype.py <br>
-</p>
+</code>
 
