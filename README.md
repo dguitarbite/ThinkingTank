@@ -16,7 +16,7 @@ Break down of the folders :
 
 
 ThinkingTank. 
-:
+::
 	    |-- Bin
 	    |	`- This folder contains the binaries (if any) and other dependences required for running 	    |	  the game.
 	    |-- Docs
