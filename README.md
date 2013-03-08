@@ -15,7 +15,7 @@ More Information will be added as we work on this project.
 Break down of the folders :
 
 <code>
-ThinkingTank. 
+ThinkingTank. <br>
 	    |-- Bin<br>
 	    |	`-- This folder contains the binaries (if any) and other dependences required for running <br>	    |	  the game.
 	    |-- Docs<br>
