@@ -30,7 +30,7 @@ Break down of the folders:
 	    	|    	|      		`-- dawn of ubuntu.png 
 	    	|   	`-- sound
 	    	|        	`-- score 
-		|            	`-- Crazy Dreams.mp3
+	    	|            	`-- Crazy Dreams.mp3
 	     	`-- src 
 		     `- This file contains the source code of the project.
 	            	 |-- Noise.py 
