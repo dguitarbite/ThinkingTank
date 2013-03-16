@@ -32,8 +32,11 @@ Created on 08-Feb-2013
  * 
 
 	This game uses Pyglet -- a simpler version of OpenGl for python.
+	
+	Control Flow?
 '''
 
+import graphics
 
 class ThinkingTank :
 	'''
@@ -41,16 +44,7 @@ class ThinkingTank :
 		This class should also contain the information for levels.
 	'''
 	
-	def __init__ThinkingTank(self):
-		'''
-			/!\	Customized Constructor
-			
-			I'm planning to load a few splash screens, some logos then the graphics.
-			Also this should load the music , then fade in the menu from black.
-			Then its the user who kind of decides what to do with the language.
-		'''
-	
-	def ThinkingTank(self):
+	def __init__(self):
 		'''
 			/!\	Customized Constructor
 			
@@ -59,22 +53,11 @@ class ThinkingTank :
 			Then its the user who kind of decides what to do with the language.
 		'''
 		
-
-	def load_sprites(self):
-		'''
-			The basic sprites which will be required for the game:
-			
-				1. Tank
-				2. Rock
-				3. Wall
-				4. Goal Tile
-				6. Normal Tile
-				7. Boundary
-				8. Display Score/Time/Level/Difficulty.
-				9. Background Music
-		'''
-
+		#call the Graphics method to start the openGl graphics window.
+		game_graphics = graphics.Graphics()
 		pass
+
+	
 
 
 	def load_level(self) :
@@ -124,34 +107,10 @@ class ThinkingTank :
 
 
 
+class Levels :
+	'''
+		
+	'''
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#start the game.
+startgame = ThinkingTank()
