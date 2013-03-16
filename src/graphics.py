@@ -27,6 +27,7 @@ class Graphics(object):
         '''
         Constructor
         '''
+        
         mainWindow = self.main_window()
         self.main_menu(mainWindow)
         self.load_sprites(mainWindow)
@@ -38,16 +39,64 @@ class Graphics(object):
         
     def main_menu(self,window):
         '''
-            The main menu will consist of 
-        '''    
-                
-        main_menu_label = pyglet.text.Label("Main Menu",
-                          font_name='Ubuntu',
-                          font_size=48, 
-                          x=window.width/2, y=800,
-                          anchor_x='center',
-                          anchor_y='center')
-        # Keyboard Mapper.
+            The main menu will consist of
+            
+                1. Labels :
+                        Main Menu
+                        ---------
+                        Start Game
+                        Help
+                        Exit
+        '''
+            
+ 
+            
+        # Title of the Menu
+        label_header = pyglet.text.Label("Main Menu",
+                                                font_name='Ubuntu',
+                                                font_size=48,
+                                                bold = True,
+                                                color=(255, 155, 55, 255), 
+                                                x=window.width/2, y=700,
+                                                anchor_x='center',
+                                                anchor_y='center')
+            
+            
+        # Menu Item 1
+        label_menu1 = pyglet.text.Label("Start Game",
+                                                font_name='Ubuntu',
+                                                font_size=28, 
+                                                x=window.width/2, y=500,
+                                                anchor_x='center',
+                                                anchor_y='center')
+        # Menu Item 2
+        label_menu2 = pyglet.text.Label("Help",
+                                                font_name='Ubuntu',
+                                                font_size=28, 
+                                                x=window.width/2, y=400,
+                                                anchor_x='center',
+                                                anchor_y='center')
+        # Menu Item 3
+        label_menu3 = pyglet.text.Label("Exit",
+                                                font_name='Ubuntu',
+                                                font_size=28, 
+                                                x=window.width/2, y=300,
+                                                anchor_x='center',
+                                                anchor_y='center')
+            
+                        
+            
+        # Add labels to OpenGL Window.
+        @window.event
+        def on_draw():
+            window.clear()
+            label_header.draw()
+            label_menu1.draw()
+            label_menu2.draw()
+            label_menu3.draw()
+            
+        
+        # Keyboard Mapper. Will decide what the pressed key will do!!!.
         KEYMAP = key.KeyStateHandler()
         
         def map_keys():
@@ -87,21 +136,75 @@ class Graphics(object):
                 2. DN
                 3. Ret
             '''
+            
+            def get_Label():
+                '''
+                    Gets the selected Label
+                '''
+                
+                
+                if label_menu1._get_bold() :
+                    return 1
+                elif label_menu2._get_bold() :
+                    return 2
+                elif label_menu3._get_bold() :
+                    return 3
+                
+                return 3
+            
+            def set_label(old, new):
+                '''
+                    Sets the new label bold
+                    and resets the older Label.
+                '''
+                if old == 1 :
+                    label_menu1._set_bold(False)
+                elif old == 2 :
+                    label_menu2._set_bold(False)
+                elif old == 3 :
+                    label_menu3._set_bold(False)
+                    
+                if new == 1 :
+                    label_menu1._set_bold(True)
+                elif new == 2 :
+                    label_menu2._set_bold(True)
+                elif new == 3 :    
+                    label_menu3._set_bold(True)
+                
             if 'UP' in key :
                 print 'Up key pressed on main menu'
+                old = get_Label()
+                
+                # Get New - Handy Logic - if new - 1 == 0 then it must point to 3 :D
+                if old-1 != 0 :
+                    new = old - 1
+                else :
+                    new = 3
+                    
+                set_label(old,new)
+
             elif 'DN' in key :
                 print 'Down Key Pressed on main menu'
+                old = get_Label()
+                
+                # Something Similar to the UP key - if its 4 then it must point to 1 ;D
+                if old + 1 != 4:
+                    new = old + 1
+                else :
+                    new = 1
+                
+                set_label(old,new)
+                # Get Old 
+                
             elif 'Ret' in key :
                 print 'Enter Key Pressed on main menu'
-            else :
-                pass
-            
-            
-        @window.event
-        def on_draw():
-            window.clear()
-            main_menu_label.draw()
-                    
+                
+                selected_Label = get_Label()
+                
+                #take action on the selected label
+                print 'you selected this label' + `selected_Label`
+                
+     
         pass
     
         @window.event
