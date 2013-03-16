@@ -7,12 +7,19 @@ This can server as a good example for students and newbies who want to do
 some basic OpenGL programs using python without having to dig into OpenGL!!!.
 
 
-More Information will be added as we work on this project.
+
+
+* Videos of this Game :
+-------------------
+[[Video Links.rst]]
+
+**Note:** More Information will be added as we work on this project.
 
 
 
 
-Break down of the folders:
+* Break down of the folders:
+-----------------------
 
 
 	ThinkingTank. 
