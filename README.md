@@ -11,7 +11,7 @@ some basic OpenGL programs using python without having to dig into OpenGL!!!.
 
 * Videos of this Game :
 -------------------
-[[Video Links.rst]]
+[Video Links.rst](https://github.com/dguitarbite/ThinkingTank/blob/master/Video%20Links.rst)
 
 **Note:** More Information will be added as we work on this project.
 
