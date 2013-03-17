@@ -7,6 +7,7 @@ Created on 14-Mar-2013
 
 '''
 
+import sys, time
 import pyglet
 from pyglet.window import key
 from pyglet.image.codecs.png import PNGImageDecoder
@@ -111,6 +112,7 @@ class Graphics(object):
                     5. ESC - Exit.
                     6. Enter - Select menu item.
             '''
+            # Push the custom defined KEYMAP key handlers into the main loop
             window.push_handlers(KEYMAP)
             
             if KEYMAP[key.DOWN]:
@@ -126,9 +128,12 @@ class Graphics(object):
                 pass
             
             elif KEYMAP[key.ENTER]:
-                key_pressed('Ret')    
+                key_pressed('Ret')
+                
+            elif KEYMAP[key.ESCAPE] :
+                pass      
         
-        def key_pressed(key):
+        def key_pressed(keys):
             '''
                 This method will define the actions preceding the key pressed
                 Types of keys are : 
@@ -136,6 +141,7 @@ class Graphics(object):
                 2. DN
                 3. Ret
             '''
+
             
             def get_Label():
                 '''
@@ -171,7 +177,7 @@ class Graphics(object):
                 elif new == 3 :    
                     label_menu3._set_bold(True)
                 
-            if 'UP' in key :
+            if 'UP' in keys :
                 print 'Up key pressed on main menu'
                 old = get_Label()
                 
@@ -183,7 +189,7 @@ class Graphics(object):
                     
                 set_label(old,new)
 
-            elif 'DN' in key :
+            elif 'DN' in keys :
                 print 'Down Key Pressed on main menu'
                 old = get_Label()
                 
@@ -196,14 +202,24 @@ class Graphics(object):
                 set_label(old,new)
                 # Get Old 
                 
-            elif 'Ret' in key :
+            elif 'Ret' in keys :
                 print 'Enter Key Pressed on main menu'
                 
                 selected_Label = get_Label()
                 
-                #take action on the selected label
-                print 'you selected this label' + `selected_Label`
-                
+                if selected_Label == 1 :
+                    print 'Start Game'
+                    # Call the start game method
+                    self.start_game(window)
+                    
+                elif selected_Label == 2 :
+                    pass
+                                    
+                elif selected_Label == 3 :
+                    # Exit - Terminate the Game on EXit.                    
+                    sys.exit()
+                    
+                        
      
         pass
     
@@ -250,7 +266,7 @@ class Graphics(object):
         
         pass
     
-    
+       
     def map_keys(self):
         '''
             This method is responsible for mapping keys 
@@ -264,6 +280,25 @@ class Graphics(object):
                 6. M - Main Menu.
                 7. ESC - Exit.
                 8. Enter - Select menu item.
+        '''
+        
+        pass
+
+    def start_game(self,window):
+        '''
+            This method will start the game by doing the following actions :
+                load sprites 
+                map new keys
+                
+                display level 1 sprites
+                if progress then display level 2 sprites
+                else main menu
+                if progress then display level 3 sprites
+                else main menu
+                
+                on M main menu
+                on R load level 1
+                
         '''
         
         pass
