@@ -40,8 +40,7 @@ import main_menu
 
 class ThinkingTank :
 	'''
-		This class is responsible for loading various properties, text , images , dependences.
-		This class should also contain the information for levels.
+		This is the master class which will drive the other classes like main_menu and levels.
 	'''
 	
 	def __init__(self):
