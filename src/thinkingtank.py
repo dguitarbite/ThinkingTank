@@ -36,7 +36,7 @@ Created on 08-Feb-2013
 	Control Flow?
 '''
 
-import graphics
+import main_menu
 
 class ThinkingTank :
 	'''
@@ -54,8 +54,8 @@ class ThinkingTank :
 		'''
 		
 		#call the Graphics method to start the openGl graphics window.
-		game_graphics = graphics.Graphics()
-		pass
+		main_menu.Main_Menu()
+		
 
 	
 

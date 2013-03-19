@@ -8,12 +8,13 @@ Created on 14-Mar-2013
 '''
 
 import sys, time
+import thinking_engine
 import pyglet
 from pyglet.window import key
 from pyglet.image.codecs.png import PNGImageDecoder
 
 
-class Graphics(object):
+class Main_Menu(object):
     '''
     
     This is a heavy Graphics file which contains of the following functionality.
@@ -28,10 +29,9 @@ class Graphics(object):
         '''
         Constructor
         '''
-        
-        mainWindow = self.main_window()
+ 
+        mainWindow = self.init_window(1200,900)
         self.main_menu(mainWindow)
-        self.load_sprites(mainWindow)
        
         # Call the OpenGL Main Loop
         pyglet.app.run()
@@ -120,18 +120,14 @@ class Graphics(object):
             
             elif KEYMAP[key.UP]:
                 key_pressed('UP')
-            
-            elif KEYMAP[key.LEFT]:
-                pass
-            
-            elif KEYMAP[key.RIGHT]:
-                pass
-            
+                 
             elif KEYMAP[key.ENTER]:
                 key_pressed('Ret')
                 
-            elif KEYMAP[key.ESCAPE] :
-                pass      
+            elif KEYMAP[key.ESCAPE]:
+                sys.exit()
+                
+     
         
         def key_pressed(keys):
             '''
@@ -178,7 +174,7 @@ class Graphics(object):
                     label_menu3._set_bold(True)
                 
             if 'UP' in keys :
-                print 'Up key pressed on main menu'
+                
                 old = get_Label()
                 
                 # Get New - Handy Logic - if new - 1 == 0 then it must point to 3 :D
@@ -190,7 +186,7 @@ class Graphics(object):
                 set_label(old,new)
 
             elif 'DN' in keys :
-                print 'Down Key Pressed on main menu'
+                
                 old = get_Label()
                 
                 # Something Similar to the UP key - if its 4 then it must point to 1 ;D
@@ -203,14 +199,15 @@ class Graphics(object):
                 # Get Old 
                 
             elif 'Ret' in keys :
-                print 'Enter Key Pressed on main menu'
                 
                 selected_Label = get_Label()
                 
                 if selected_Label == 1 :
                     print 'Start Game'
+                    thinking_engine.Engine()
                     # Call the start game method
-                    self.start_game(window)
+                    return True 
+                        
                     
                 elif selected_Label == 2 :
                     pass
@@ -228,14 +225,10 @@ class Graphics(object):
             map_keys()
         
         
-    def main_window(self):
+    def init_window(self, SCREEN_H, SCREEN_W):
         '''
             This will be the graphics window of the game. This will contain the window properties.
         '''
-        # Height of the screen
-        SCREEN_H = 1200
-        #Width of the screen
-        SCREEN_W = 900
         
         # Call the default constructor of pyglet for initialization of openGL window.
         mainWindow = pyglet.window.Window(SCREEN_H, SCREEN_W, caption = "Thinking Tank")
@@ -249,56 +242,3 @@ class Graphics(object):
         
         return mainWindow
         
-        
-    def load_sprites(self,window):
-        '''
-            The basic sprites which will be required for the game:
-            
-                1. Tank
-                2. Rock
-                3. Wall
-                4. Goal Tile
-                6. Normal Tile
-                7. Boundary
-                8. Display Score/Time/Level/Difficulty.
-                9. Background Music
-        '''
-        
-        pass
-    
-       
-    def map_keys(self):
-        '''
-            This method is responsible for mapping keys 
-            The following keys are used in this game :
-                
-                1. UP - Move Tank Up.
-                2. DOWN - Move Tank Down.
-                3. LEFT - Move Tank Left.
-                4. RIGHT - Move Tank Right.
-                5. R - Reset Level.
-                6. M - Main Menu.
-                7. ESC - Exit.
-                8. Enter - Select menu item.
-        '''
-        
-        pass
-
-    def start_game(self,window):
-        '''
-            This method will start the game by doing the following actions :
-                load sprites 
-                map new keys
-                
-                display level 1 sprites
-                if progress then display level 2 sprites
-                else main menu
-                if progress then display level 3 sprites
-                else main menu
-                
-                on M main menu
-                on R load level 1
-                
-        '''
-        
-        pass
