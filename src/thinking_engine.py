@@ -27,39 +27,73 @@ class Engine():
         
         pyglet.app.run()
     
-    def collide_x(self, x):
+    def collide(self,x, y):
+        
+        
+        C = [[100,150,150,50],[100,250,150,200],[250,250,300,200],[250,150,350,100]]
+        
+        for X1,Y1,X2,Y2 in C :
+            print `X1` + `Y1` + `X2` + `Y2`
+            if x + 20 in range(X1,X2) or x - 20 in range(X1,X2):
+                if y + 20 in range(Y1,Y2) or y - 20 in range(Y1,Y2):
+                    return True 
+            
+            
+        return False
+        '''
+        X = [50,350 ,100,150,250,300]
+        Y = [50,350 ,250,200,150,100]
+        
+        if x + 25 in X or x - 25 in X :
+            
+            if y + 25 in Y or y - 25 in Y :
+                return True
+            else :
+                return False
+        
+        elif y + 25 in Y or y - 25 in Y :
+            
+            if x + 25 in X or x - 25 in X :
+                return True
+            else :
+                return False
+        
+        return False
+        '''
+    def collide_x(self, x, y):
         ''' 
-            Checks for x collision
+            1. Checks for border (X axis) collision
+            2. Check for inside collision)
         '''
 
         # Transform the position of the world to uniform axis (0,0) 
-    
+        
         X  = [50,350]
     
 
-        if (x) in X:
+        if x + 25 in X or x - 25 in X:
             return True
-        if (x) in X:
-            return True
+           
+        return self.collide(x,y)
+        
     
-        return False
-
-    
-    def collide_y(self, y):
+    def collide_y(self, x, y):
         ''' 
     
-            Check for Y axis collision
+            1. Check for Border (Y axis) collision
+            2. Check for Inside collisions
         '''
-
-        Y = [50,300]    
+       
+        Y = [50,350]    
         
-        if (y) in Y:
-            return True
-        if (y) in Y:
+        if y + 25 in Y or y - 25 in Y:
             return True
 
-        return False
+       
+        return self.collide(x,y)
+        
     
+
     
     def init_window(self, SCREEN_H, SCREEN_W):
         '''
@@ -110,7 +144,7 @@ class Engine():
         tank = sprite_tank = pyglet.sprite.Sprite(img_tank)
         sprite_tank.x = 175
         sprite_tank.y = 175
-            
+        print dir(sprite_tank)
         # Level 1 Graphics
         img_level1 = pyglet.image.load('res/images/sprites/Level 1/Level1.png', decoder=PNGImageDecoder())
         sprite_level1 = pyglet.sprite.Sprite(img_level1)
@@ -165,47 +199,51 @@ class Engine():
             if 'UP' in key:
                 if tank._rotation.__pos__() == 0:
                     # Check for collission
-                    if not self.collide_y(tank.y) :
+                    if not self.collide_y(tank.x,tank.y) :
                         tank.y += 1
                     else :
-                        tank.y -= 5
+                        tank.y -= 1
+                        time.sleep(0.50)
                 else :    
                     tank._set_rotation(0.0)
-                    time.sleep(0.10)
+                    time.sleep(0.50)
                     
             if 'DN' in key:
                 if tank._rotation.__pos__() == 180:    
                     # Check for collission
-                    if not self.collide_y(tank.y) :
+                    if not self.collide_y(tank.x,tank.y) :
                         tank.y -= 1
                     else :
-                        tank.y += 5
+                        tank.y += 1
+                        time.sleep(0.50)
                 else :
                     tank._set_rotation(180.0)
-                    time.sleep(0.10)
+                    time.sleep(0.50)
                     
             if 'LT' in key:
                 if tank._rotation.__pos__() == 270:
                 # Check for collission
-                    if not self.collide_x(tank.x) :
+                    if not self.collide_x(tank.x,tank.y) :
                         tank.x -= 1
                     else :
-                        tank.x += 5
+                        tank.x += 1
+                        time.sleep(0.50)
                 else :
                     tank._set_rotation(270.0)
-                    time.sleep(0.10)
+                    time.sleep(0.50)
                 
             if 'RT' in key:
                 
                 if tank._rotation.__pos__() == 90:
                 # Check for collission
-                    if not self.collide_x(tank.x) : 
+                    if not self.collide_x(tank.x,tank.y) : 
                         tank.x += 1
                     else :
-                        tank.x -= 5
+                        tank.x -= 1
+                        time.sleep(0.50)
                 else :
                     tank._set_rotation(90.0)
-                    time.sleep(0.10)
+                    time.sleep(0.50)
                 
             if 'M' in key:
                 window.close()
