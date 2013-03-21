@@ -20,7 +20,7 @@ some basic OpenGL programs using python without having to dig into OpenGL!!!.
 
 * Break down of the folders:
 -----------------------
-
+# Old Version needs to be updated.
 
 	ThinkingTank. 
 	    	|-- Bin 
