@@ -30,7 +30,7 @@ class Main_Menu(object):
         Constructor
         '''
  
-        mainWindow = self.init_window(1200,900)
+        mainWindow = self.init_window(800,640)
         self.main_menu(mainWindow)
        
         # Call the OpenGL Main Loop
@@ -58,7 +58,7 @@ class Main_Menu(object):
                                                 font_size=48,
                                                 bold = True,
                                                 color=(255, 155, 55, 255), 
-                                                x=window.width/2, y=700,
+                                                x=window.width/2, y=500,
                                                 anchor_x='center',
                                                 anchor_y='center')
             
@@ -67,21 +67,21 @@ class Main_Menu(object):
         label_menu1 = pyglet.text.Label("Start Game",
                                                 font_name='Ubuntu',
                                                 font_size=28, 
-                                                x=window.width/2, y=500,
+                                                x=window.width/2, y=350,
                                                 anchor_x='center',
                                                 anchor_y='center')
         # Menu Item 2
         label_menu2 = pyglet.text.Label("Help",
                                                 font_name='Ubuntu',
                                                 font_size=28, 
-                                                x=window.width/2, y=400,
+                                                x=window.width/2, y=250,
                                                 anchor_x='center',
                                                 anchor_y='center')
         # Menu Item 3
         label_menu3 = pyglet.text.Label("Exit",
                                                 font_name='Ubuntu',
                                                 font_size=28, 
-                                                x=window.width/2, y=300,
+                                                x=window.width/2, y=150,
                                                 anchor_x='center',
                                                 anchor_y='center')
             

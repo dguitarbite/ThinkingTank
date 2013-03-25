@@ -74,7 +74,7 @@ class Engine():
         if x + 25 in X or x - 25 in X:
             return True
            
-        return self.collide(x,y)
+        return False
         
     
     def collide_y(self, x, y):
@@ -90,7 +90,7 @@ class Engine():
             return True
 
        
-        return self.collide(x,y)
+        return True
         
     
 
@@ -200,7 +200,8 @@ class Engine():
                 if tank._rotation.__pos__() == 0:
                     # Check for collission
                     if not self.collide_y(tank.x,tank.y) :
-                        tank.y += 1
+                        if not self.collide_y(tank.x, tank.y) :
+                            tank.y += 1
                     else :
                         tank.y -= 1
                         time.sleep(0.50)
@@ -212,7 +213,8 @@ class Engine():
                 if tank._rotation.__pos__() == 180:    
                     # Check for collission
                     if not self.collide_y(tank.x,tank.y) :
-                        tank.y -= 1
+                        if not self.collide(tank.x,tank.y):
+                            tank.y -= 1
                     else :
                         tank.y += 1
                         time.sleep(0.50)
@@ -224,7 +226,8 @@ class Engine():
                 if tank._rotation.__pos__() == 270:
                 # Check for collission
                     if not self.collide_x(tank.x,tank.y) :
-                        tank.x -= 1
+                        if not self.collide(tank.x,tank.y):
+                            tank.x -= 1
                     else :
                         tank.x += 1
                         time.sleep(0.50)
@@ -236,8 +239,9 @@ class Engine():
                 
                 if tank._rotation.__pos__() == 90:
                 # Check for collission
-                    if not self.collide_x(tank.x,tank.y) : 
-                        tank.x += 1
+                    if not self.collide_x(tank.x,tank.y) :
+                        if not self.collide(tank.x,tank.y): 
+                            tank.x += 1
                     else :
                         tank.x -= 1
                         time.sleep(0.50)
@@ -264,13 +268,4 @@ class Engine():
         def on_mouse_press(x, y, button, modifiers):
             print 'X,Y:' + `x` + ',' + `y`
         
-        pyglet.clock.schedule_interval(map_keys, 1.0/60.0)    
-    
-         
-
-
-
-            
-        
-                
-            
+        pyglet.clock.schedule_interval(map_keys, 1.0/60.0)

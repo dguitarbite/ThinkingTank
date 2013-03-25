@@ -135,4 +135,3 @@ def on_key_press(symbol, modifiers):
     update()
 
 pyglet.app.run()
-
