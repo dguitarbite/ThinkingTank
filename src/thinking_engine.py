@@ -32,12 +32,22 @@ class Engine():
         
         C = [[100,150,150,50],[100,250,150,200],[250,250,300,200],[250,150,350,100]]
         
-        for X1,Y1,X2,Y2 in C :
-            print `X1` + `Y1` + `X2` + `Y2`
-            if x + 20 in range(X1,X2) or x - 20 in range(X1,X2):
-                if y + 20 in range(Y1,Y2) or y - 20 in range(Y1,Y2):
-                    return True 
+        
+        if x + 20 in range (100,150) or x -20 in range(100,150) :
+            if y + 20 in range (50,150) or y -20 in range (50,150) :
+                return True
+              
+        if x + 20 in range (100,150) or x -20 in range(100,150) :
+            if y + 20 in range (200,250) or y -20 in range (200,250) :
+                return True
             
+        if x + 20 in range (250,300) or x -20 in range(250,300) :
+            if y + 20 in range (200,250) or y -20 in range (200,250) :
+                return True
+            
+        if x + 20 in range (250,350) or x -20 in range(250,350) :
+            if y + 20 in range (100,150) or y -20 in range (100,150) :
+                return True
             
         return False
         '''
@@ -71,7 +81,7 @@ class Engine():
         X  = [50,350]
     
 
-        if x + 25 in X or x - 25 in X:
+        if x + 20 in X or x - 20 in X:
             return True
            
         return False
@@ -86,11 +96,11 @@ class Engine():
        
         Y = [50,350]    
         
-        if y + 25 in Y or y - 25 in Y:
+        if y + 20 in Y or y - 20 in Y:
             return True
 
        
-        return True
+        return False
         
     
 
@@ -200,8 +210,11 @@ class Engine():
                 if tank._rotation.__pos__() == 0:
                     # Check for collission
                     if not self.collide_y(tank.x,tank.y) :
-                        if not self.collide_y(tank.x, tank.y) :
+                        if not self.collide(tank.x, tank.y) :
                             tank.y += 1
+                        else :
+                            tank.y -= 1
+                            time.sleep(0.50)
                     else :
                         tank.y -= 1
                         time.sleep(0.50)
@@ -215,6 +228,9 @@ class Engine():
                     if not self.collide_y(tank.x,tank.y) :
                         if not self.collide(tank.x,tank.y):
                             tank.y -= 1
+                        else :
+                            tank.y += 1
+                            time.sleep(0.50)
                     else :
                         tank.y += 1
                         time.sleep(0.50)
@@ -228,6 +244,9 @@ class Engine():
                     if not self.collide_x(tank.x,tank.y) :
                         if not self.collide(tank.x,tank.y):
                             tank.x -= 1
+                        else :
+                            tank.x += 1
+                            time.sleep(0.50)
                     else :
                         tank.x += 1
                         time.sleep(0.50)
@@ -242,6 +261,9 @@ class Engine():
                     if not self.collide_x(tank.x,tank.y) :
                         if not self.collide(tank.x,tank.y): 
                             tank.x += 1
+                        else :
+                            tank.x -= 1
+                            time.sleep(0.50)
                     else :
                         tank.x -= 1
                         time.sleep(0.50)
