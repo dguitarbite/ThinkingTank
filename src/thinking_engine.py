@@ -30,23 +30,25 @@ class Engine():
     def collide(self,x, y):
         
         
-        C = [[100,150,150,50],[100,250,150,200],[250,250,300,200],[250,150,350,100]]
-        
         
         if x + 20 in range (100,150) or x -20 in range(100,150) :
             if y + 20 in range (50,150) or y -20 in range (50,150) :
+                self.bounce()
                 return True
               
         if x + 20 in range (100,150) or x -20 in range(100,150) :
             if y + 20 in range (200,250) or y -20 in range (200,250) :
+                self.bounce()
                 return True
             
         if x + 20 in range (250,300) or x -20 in range(250,300) :
             if y + 20 in range (200,250) or y -20 in range (200,250) :
+                self.bounce()
                 return True
             
         if x + 20 in range (250,350) or x -20 in range(250,350) :
             if y + 20 in range (100,150) or y -20 in range (100,150) :
+                self.bounce()
                 return True
             
         return False
@@ -82,10 +84,15 @@ class Engine():
     
 
         if x + 20 in X or x - 20 in X:
+            self.bounce()
             return True
            
         return False
+    
+    def crock(self,x,y):
         
+        return False
+    
     
     def collide_y(self, x, y):
         ''' 
@@ -97,14 +104,24 @@ class Engine():
         Y = [50,350]    
         
         if y + 20 in Y or y - 20 in Y:
+            self.bounce()
             return True
 
        
         return False
         
     
-
-    
+    def bounce(self):
+        '''
+            On Bounce create sounds :D 
+        '''
+        try :
+            bounce = pyglet.resource.media('res/sound/Bounce.mp3')
+            bounce.play()
+        except :
+            pass
+        
+        
     def init_window(self, SCREEN_H, SCREEN_W):
         '''
             This will be the graphics window of the game. This will contain the window properties.
@@ -149,12 +166,24 @@ class Engine():
         img_tank = pyglet.image.load('res/images/sprites/Level 1/Tank.png', decoder=PNGImageDecoder())
         img_tank.anchor_x = 25
         img_tank.anchor_y = 25
-            
+                    
         #  Convert it to sprite
         tank = sprite_tank = pyglet.sprite.Sprite(img_tank)
         sprite_tank.x = 175
         sprite_tank.y = 175
-        print dir(sprite_tank)
+
+        # Add Rock Sprite 
+        img_rock = pyglet.image.load('res/images/sprites/Level 1/Rock.png' , decoder=PNGImageDecoder())
+        rock1 = sprite_rock_1 = pyglet.sprite.Sprite(img_rock)
+        rock2 = sprite_rock_2 = pyglet.sprite.Sprite(img_rock)
+        
+        sprite_rock_1.x = 100 
+        sprite_rock_1.y = 250
+        
+        sprite_rock_2.x = 250
+        sprite_rock_2.y = 250 
+
+                
         # Level 1 Graphics
         img_level1 = pyglet.image.load('res/images/sprites/Level 1/Level1.png', decoder=PNGImageDecoder())
         sprite_level1 = pyglet.sprite.Sprite(img_level1)
@@ -162,9 +191,14 @@ class Engine():
 
         sprite_level1.x = 0
         sprite_level1.y = 0 
-                
+        
+                        
         KEYMAP = key.KeyStateHandler()
         
+        def rock(self):
+            '''
+                Code to move the rock
+            '''
         
         def map_keys(dt):
             '''
@@ -211,7 +245,9 @@ class Engine():
                     # Check for collission
                     if not self.collide_y(tank.x,tank.y) :
                         if not self.collide(tank.x, tank.y) :
-                            tank.y += 1
+                            if not self.crock(tank.x,tank.y) :
+                                self.rock()
+                                tank.y += 1
                         else :
                             tank.y -= 1
                             time.sleep(0.50)
@@ -227,7 +263,9 @@ class Engine():
                     # Check for collission
                     if not self.collide_y(tank.x,tank.y) :
                         if not self.collide(tank.x,tank.y):
-                            tank.y -= 1
+                            if not self.crock(tank.x,tank.y) :
+                                self.rock()
+                                tank.y -= 1
                         else :
                             tank.y += 1
                             time.sleep(0.50)
@@ -243,7 +281,9 @@ class Engine():
                 # Check for collission
                     if not self.collide_x(tank.x,tank.y) :
                         if not self.collide(tank.x,tank.y):
-                            tank.x -= 1
+                            if not self.crock(tank.x,tank.y) :
+                                self.rock()
+                                tank.x -= 1
                         else :
                             tank.x += 1
                             time.sleep(0.50)
@@ -259,8 +299,10 @@ class Engine():
                 if tank._rotation.__pos__() == 90:
                 # Check for collission
                     if not self.collide_x(tank.x,tank.y) :
-                        if not self.collide(tank.x,tank.y): 
-                            tank.x += 1
+                        if not self.collide(tank.x,tank.y):
+                            if not self.crock(tank.x,tank.y) :
+                                self.rock() 
+                                tank.x += 1
                         else :
                             tank.x -= 1
                             time.sleep(0.50)
@@ -284,6 +326,8 @@ class Engine():
         def on_draw():
             window.clear()
             sprite_level1.draw()
+            sprite_rock_1.draw()
+            sprite_rock_2.draw()
             sprite_tank.draw()
         
         @window.event
