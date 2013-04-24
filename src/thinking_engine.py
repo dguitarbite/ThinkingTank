@@ -237,7 +237,7 @@ class Engine():
                 
             elif KEYMAP[key.ESCAPE] :
                 sys.exit()     
-            
+               
         def key_pressed(key):
             
             if 'UP' in key:
@@ -246,7 +246,7 @@ class Engine():
                     if not self.collide_y(tank.x,tank.y) :
                         if not self.collide(tank.x, tank.y) :
                             if not self.crock(tank.x,tank.y) :
-                                self.rock()
+                                
                                 tank.y += 1
                         else :
                             tank.y -= 1
@@ -264,7 +264,7 @@ class Engine():
                     if not self.collide_y(tank.x,tank.y) :
                         if not self.collide(tank.x,tank.y):
                             if not self.crock(tank.x,tank.y) :
-                                self.rock()
+                                
                                 tank.y -= 1
                         else :
                             tank.y += 1
@@ -282,7 +282,7 @@ class Engine():
                     if not self.collide_x(tank.x,tank.y) :
                         if not self.collide(tank.x,tank.y):
                             if not self.crock(tank.x,tank.y) :
-                                self.rock()
+                                
                                 tank.x -= 1
                         else :
                             tank.x += 1
@@ -301,7 +301,7 @@ class Engine():
                     if not self.collide_x(tank.x,tank.y) :
                         if not self.collide(tank.x,tank.y):
                             if not self.crock(tank.x,tank.y) :
-                                self.rock() 
+                                 
                                 tank.x += 1
                         else :
                             tank.x -= 1
