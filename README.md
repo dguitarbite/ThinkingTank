@@ -18,4 +18,4 @@ Videos of this Game :
 For Windows Executable :
 ------------------
 
-If you want to be free of installations, and just want to try out this game, will you can contact me at pps.pranav@gmail.com for the Executables. These .exe files will run seemlessly and you get to enjoy the game :).
+If you want to be free of installations, and just want to try out this game. Check out py2exe for generating windows executables!
